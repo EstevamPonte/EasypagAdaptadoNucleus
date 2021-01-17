@@ -1,11 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CobrancaComponent } from './Cobranca/cobranca.component'
+import { ClienteComponent } from './Cliente/cliente.component'
+import { CadastroCobrancaComponent } from './CadastroCobranca/cadastroCobranca.component'
+import { CadastroClienteWrapperComponent } from './CadastroClienteWrapper/cadastroclientewrapper.component'
 
 const routes: Routes = [
   {
     path: 'cobranca',
-    component: CobrancaComponent
+    component: CadastroClienteWrapperComponent
   },
   {
     path: '',

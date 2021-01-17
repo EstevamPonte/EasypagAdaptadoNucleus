@@ -1,0 +1,79 @@
+
+  <mat-card class="cardStyle">
+    <h1>Cadastrar cobrança</h1>
+    <mat-divider></mat-divider>
+    <form action="" [formGroup]="cobranca">
+
+      <mat-grid-list cols="4" rowHeight="100px">
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <h3>Destinatário  (Caso o cliente não esteja cadastrado, cadastre ao lado)</h3>
+        </mat-grid-tile>
+        
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <h3>Selecionte uma data de vencimento</h3>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1">
+          <mat-form-field class="clienteInput">
+            <mat-label>Selecione um cliente</mat-label>
+            <mat-select>
+              <mat-option value="one">First option</mat-option>
+              <mat-option value="two">Second option</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+          <mat-form-field appearance="fill" class="dataPickerStyle">
+            <mat-label>Data de vencimento</mat-label>
+            <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" disabled>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker disabled="false"></mat-datepicker>
+          </mat-form-field>
+        </mat-grid-tile>
+
+        <mat-grid-tile [colspan]="4" [rowspan]="1">
+          <h3>Itens do boleto</h3>
+        </mat-grid-tile>
+        
+      </mat-grid-list>
+
+      <button (click)="addItem()" mat-raised-button color="primary">Adicionar item</button>
+
+      <mat-grid-list cols="10" rowHeight="100px">
+        <ng-container formArrayName="itens">
+            <div *ngFor="let itens of itens.controls; index as i">
+
+              <ng-container [formGroupName]="i">
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                  <mat-form-field class="inputStyle">
+                    <mat-label>Descrição do produto</mat-label>
+                    <input matInput formControlName="descricao">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                  <mat-form-field class="inputStyle">
+                    <mat-label>Preço</mat-label>
+                    <input matInput formControlName="preco">
+                  </mat-form-field>
+                </mat-grid-tile>
+
+                <mat-grid-tile [colspan]="3" [rowspan]="1">
+                  <mat-form-field class="inputStyle">
+                    <mat-label>Quantidade</mat-label>
+                    <input matInput formControlName="quantidade">
+                  </mat-form-field>
+                </mat-grid-tile>
+              </ng-container>
+              <mat-grid-tile [colspan]="1" [rowspan]="1">
+                <button (click)="removeItem(i)" mat-raised-button color="warn">Deletar</button>
+              </mat-grid-tile>
+
+            </div>
+          </ng-container>
+        </mat-grid-list>
+    </form>
+  </mat-card>

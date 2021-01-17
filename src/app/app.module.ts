@@ -6,8 +6,12 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { CobrancaComponent } from './Cobranca/cobranca.component';
-import { NavBarComponent } from './NavBar/navbar.component'
+import { ClienteComponent } from './Cliente/cliente.component';
+import { NavBarComponent } from './NavBar/navbar.component';
+import { CadastroCobrancaComponent } from './CadastroCobranca/cadastroCobranca.component';
+import { CadastroClienteWrapperComponent } from './CadastroClienteWrapper/cadastroclientewrapper.component'
+
+import { ClienteService } from './Services/cliente.service'
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -19,6 +23,10 @@ import { NgxMaskModule, IConfig } from 'ngx-mask';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { HttpClientModule } from '@angular/common/http';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -27,8 +35,10 @@ const maskConfig: Partial<IConfig> = {
 @NgModule({
   declarations: [
     AppComponent,
-    CobrancaComponent,
+    ClienteComponent,
     NavBarComponent,
+    CadastroCobrancaComponent,
+    CadastroClienteWrapperComponent
   ],
   imports: [
     BrowserModule,
@@ -45,9 +55,15 @@ const maskConfig: Partial<IConfig> = {
     NgxMaskModule.forRoot(maskConfig),
     MatDividerModule,
     MatExpansionModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [
+    ClienteService
+  ],
   bootstrap: [AppComponent],
   exports: [
   ]

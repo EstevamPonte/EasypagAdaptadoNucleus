@@ -1,0 +1,14 @@
+.cadastrocobranca {
+  width: 100%;
+  
+  padding-right: 10px; 
+}
+.cadastrocliente {
+  width: 70%;
+  padding-left: 10px;
+}
+
+.divWrapper {
+  padding: 30px;
+  display: flex;
+}

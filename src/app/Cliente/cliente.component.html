@@ -1,26 +1,14 @@
-<div>
+<div class="divStyle">
   <mat-card class="cardStyle">
-
-    <mat-checkbox class="example-margin" [(ngModel)]="checked">Quer cadastrar um novo cliente?</mat-checkbox>
-
-    <form action="" [formGroup]="form" (ngSubmit)="cadastrarCobranca()">
-    <mat-accordion>
-      <mat-expansion-panel [disabled]="!checked">
-
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            Cadastrar cliente
-          </mat-panel-title>
-          
-        </mat-expansion-panel-header>
-
-
+    <h1>Cadastrar do cliente</h1>
+    <mat-divider></mat-divider>
+    <form action="" [formGroup]="form" (ngSubmit)="cadastrarCliente()">
           <mat-grid-list cols="4" rowHeight="100px">
 
             <mat-grid-tile [colspan]="4" [rowspan]="1">
-              <h3>Destinatário</h3>
-            </mat-grid-tile>
-    
+              <h3>Informações do cliente ou da razão social</h3>
+            </mat-grid-tile>  
+
             <mat-grid-tile [colspan]="2" [rowspan]="1">
               <mat-form-field class="inputStyle">
                 <mat-label>Nome/Razão Social</mat-label>
@@ -34,6 +22,21 @@
                 <input matInput mask="000.000.000-00||00.000.000/0000-00" formControlName="cpfcnpj">
               </mat-form-field>
             </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              <mat-form-field class="inputStyle">
+                <mat-label>Telefone</mat-label>
+                <input matInput mask="(00) 00000-0000" formControlName="telefone">
+              </mat-form-field>
+            </mat-grid-tile>
+
+            <mat-grid-tile [colspan]="2" [rowspan]="1">
+              <mat-form-field class="inputStyle">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" formControlName="email">
+              </mat-form-field>
+            </mat-grid-tile>
+
           </mat-grid-list>
 
           <mat-grid-list cols="9" rowHeight="100px">
@@ -45,7 +48,7 @@
             <mat-grid-tile [colspan]="3" [rowspan]="1">
               <mat-form-field class="inputStyle">
                 <mat-label>CEP</mat-label>
-                <input matInput formControlName="cep">
+                <input matInput formControlName="cep" mask="00000-000">
               </mat-form-field>
             </mat-grid-tile>
     
@@ -79,46 +82,19 @@
     
             <mat-grid-tile [colspan]="3" [rowspan]="1">
               <mat-form-field class="inputStyle">
-                <mat-label>Complemento</mat-label>
-                <input matInput formControlName="complemento">
+                <mat-label>Bairro</mat-label>
+                <input matInput formControlName="bairro">
               </mat-form-field>
             </mat-grid-tile>
             
             <mat-grid-tile [colspan]="9" [rowspan]="1">
-              <button mat-raised-button color="primary" type="submit">Cadastrar cobrança</button>
+              <button mat-raised-button color="primary" type="submit">Cadastrar cliente</button>
             </mat-grid-tile>
-    
+            
           </mat-grid-list>
-
-      </mat-expansion-panel>
-    </mat-accordion>
-
-    
-
-      <!-- <mat-grid-list cols="4" rowHeight="100px">
-
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
-          <h3>Destinatário</h3>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field class="inputStyle">
-            <mat-label>Nome/Razão Social</mat-label>
-            <input matInput id="name" formControlName="name">
-          </mat-form-field>
-        </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
-          <mat-form-field class="inputStyle">
-            <mat-label>CPF/CNPJ</mat-label>
-            <input matInput mask="000.000.000-00||00.000.000/0000-00" formControlName="cpfcnpj">
-          </mat-form-field>
-        </mat-grid-tile>
-      </mat-grid-list> -->
-
-      <!-- <mat-divider></mat-divider> -->
-      
-
-    </form>
-  </mat-card>
+          
+          
+        </form>
+      </mat-card>
+        <button mat-raised-button color="primary" (click)="obterClientes()">Cadastrar cliente</button>
 </div>

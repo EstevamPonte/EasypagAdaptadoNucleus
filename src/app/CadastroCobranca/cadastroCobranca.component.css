@@ -1,0 +1,19 @@
+h3 {
+  width: 100%;
+  margin: 0;
+}
+
+.clienteDataWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
+.clienteInput {
+  width: 80%;
+}
+
+.dataPickerStyle {
+  width: 80%;
+}
