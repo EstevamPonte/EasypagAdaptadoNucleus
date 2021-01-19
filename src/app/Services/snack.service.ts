@@ -1,4 +1,3 @@
-import { style } from '@angular/animations';
 import {Injectable, NgZone} from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
 

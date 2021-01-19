@@ -10,6 +10,7 @@ import { ClienteComponent } from './Cliente/cliente.component';
 import { NavBarComponent } from './NavBar/navbar.component';
 import { CadastroCobrancaComponent } from './CadastroCobranca/cadastroCobranca.component';
 import { CadastroClienteWrapperComponent } from './CadastroClienteWrapper/cadastroclientewrapper.component';
+import { ListarCobrancaComponent } from './ListarCobranca/listarcobranca.component'
 
 import { ClienteService } from './Services/cliente.service';
 import { CustomSnackbarService } from './Services/snack.service';
@@ -30,9 +31,12 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { DatePipe } from '@angular/common';
 import { NgxCurrencyModule, CurrencyMaskInputMode } from "ngx-currency";
+import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
@@ -59,7 +63,8 @@ export const customCurrencyMaskConfig: any = {
     ClienteComponent,
     NavBarComponent,
     CadastroCobrancaComponent,
-    CadastroClienteWrapperComponent
+    CadastroClienteWrapperComponent,
+    ListarCobrancaComponent,
   ],
   imports: [
     BrowserModule,
@@ -82,8 +87,11 @@ export const customCurrencyMaskConfig: any = {
     MatNativeDateModule,
     HttpClientModule,
     MatSnackBarModule,
-    MatMomentDateModule,
-    NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig),
+    MatIconModule,
+    MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     ClienteService,

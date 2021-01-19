@@ -1,11 +1,12 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Cobranca } from '../Model/cobranca.model'
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class CobrancaService {
   public headers = new HttpHeaders()
+  public params = new HttpParams()  
   readonly apiURL = 'http://localhost:4200/api/v1/invoices'
 
   public constructor (private http: HttpClient) {
@@ -14,8 +15,23 @@ export class CobrancaService {
 
     this.headers = this.headers.append('Authorization', 'Basic ' + btoa(basicAuth))
   }
-
+  
   postCobranca(cobranca: Cobranca): Observable<Cobranca> {
     return this.http.post<Cobranca>(this.apiURL, cobranca, { headers: this.headers })
+  }
+  
+  getCobranca(limit:number, page: number): Observable<any> {
+    let currentPage = page.toString()
+    let currentLimit = limit.toString()
+
+    return this.http.get(this.apiURL, { headers: this.headers, params: {limit: currentLimit, page: currentPage} })
+  }
+
+  deleteCobranca(id: string): Observable<Object> {
+    return this.http.post(`${this.apiURL}/${id}/cancel`, { headers: this.headers }, { headers: this.headers })
+  }
+
+  viewBoleto(id: string): Observable<Object>{
+    return this.http.get(`${this.apiURL}/${id}/view/boleto`, { headers: this.headers, responseType: 'blob' })
   }
 }

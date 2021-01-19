@@ -1,5 +1,11 @@
 <mat-toolbar>
   <mat-toolbar-row>
-    <span>Pagamentos Estevans </span>
+    <div class="toobarStyle">
+      <span>Pagamentos Estevans </span>
+      <div>
+        <button mat-button [routerLink]="['/cobranca']">Cadastro de cobranca</button>
+        <button mat-button [routerLink]="['/listarcobranca']">Vistualizar cobranca</button>
+      </div>
+    </div>
   </mat-toolbar-row>
 </mat-toolbar>

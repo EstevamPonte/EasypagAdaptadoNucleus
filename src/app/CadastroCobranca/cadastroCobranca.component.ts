@@ -19,9 +19,12 @@ export class CadastroCobrancaComponent implements OnInit{
   public cobranca: FormGroup
   public clientesResults: Array<Cliente> = new Array;
   public itens: any = []
+  public colSpinner: number = 0
+  public colIcon: number = 2
+  public hiddenSpinner: boolean = true
 
   ngOnInit() {
-    this.obterClientes()
+    this.obterClientes(true, 2, 0)
 
   }
   
@@ -57,6 +60,7 @@ export class CadastroCobrancaComponent implements OnInit{
     })
     
     this.itens.push(item)
+    console.log(this.itens.length)
 
   }
   
@@ -72,12 +76,18 @@ export class CadastroCobrancaComponent implements OnInit{
     return diaAnterior < diasDoCalendario;
   }
 
-  public obterClientes() {
+  public obterClientes(hiddenSpinner: boolean, colIcon: number, colSpinner: number) {
+    this.colIcon = colIcon
+    this.colSpinner = colSpinner
+    this.hiddenSpinner = hiddenSpinner
     this.clienteService.getClientes()
       .subscribe(
         (clientes: Clientes) => { 
           this.clientesResults = clientes.results
           console.log(this.clientesResults)
+          this.colIcon = 2
+          this.colSpinner = 0
+          this.hiddenSpinner = true
         }
       )
   }

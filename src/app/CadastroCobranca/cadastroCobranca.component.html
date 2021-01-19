@@ -4,18 +4,18 @@
     <mat-divider></mat-divider>
     <form action="" [formGroup]="cobranca" (ngSubmit)="criarCobranca()">
 
-      <mat-grid-list cols="4" rowHeight="100px">
+      <mat-grid-list cols="10" rowHeight="100px">
 
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <h3>Destinatário  (Caso o cliente não esteja cadastrado, cadastre ao lado)</h3>
         </mat-grid-tile>
         
 
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        <mat-grid-tile [colspan]="5" [rowspan]="1">
           <h3>Selecionte uma data de vencimento</h3>
         </mat-grid-tile>
-
-        <mat-grid-tile [colspan]="2" [rowspan]="1">
+        
+        <mat-grid-tile [colspan]="3" [rowspan]="1">
           <mat-form-field formGroupName="customer" class="clienteInput">
             <mat-label >Selecione um cliente</mat-label>
             <mat-select formControlName="id">
@@ -25,8 +25,19 @@
             </mat-select>
           </mat-form-field>
         </mat-grid-tile>
+        
+        <mat-grid-tile  [colspan]="colSpinner" [rowspan]="1">
+          <mat-spinner [diameter]="30" [hidden]="hiddenSpinner"></mat-spinner>
+        </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="2" [rowspan]="1" >
+        <mat-grid-tile [colspan]="colIcon" [rowspan]="1">
+          <button (click)="obterClientes(false, 1, 1)" mat-icon-button type="button" aria-label="Example home icon" aria-label="Atualize a lista de clientes">
+            <mat-icon aria-hidden="false">refresh</mat-icon>
+          </button>
+        </mat-grid-tile>
+
+
+        <mat-grid-tile [colspan]="5" [rowspan]="1" >
           <mat-form-field appearance="fill" class="dataPickerStyle">
             <mat-label>Data de vencimento</mat-label>
             <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker" formControlName="dueDate" >
@@ -35,13 +46,13 @@
           </mat-form-field>
         </mat-grid-tile>
 
-        <mat-grid-tile [colspan]="4" [rowspan]="1">
+        <mat-grid-tile [colspan]="10" [rowspan]="1">
           <h3>Itens do boleto</h3>
         </mat-grid-tile>
         
       </mat-grid-list>
 
-      <button (click)="addItem()" type="button" mat-raised-button color="primary">Adicionar item</button>
+      <button (click)="addItem()" type="button"  mat-raised-button color="primary">Adicionar item</button>
 
       <mat-grid-list cols="10" rowHeight="100px">
         
@@ -71,7 +82,7 @@
                 </mat-grid-tile>
               </ng-container>
               <mat-grid-tile [colspan]="1" [rowspan]="1">
-                <button (click)="removeItem(i)" mat-raised-button color="warn">Deletar</button>
+                <button (click)="removeItem(i)" [disabled]="itens.length === 1" mat-raised-button color="warn">Deletar</button>
               </mat-grid-tile>
 
             </div>
@@ -83,4 +94,5 @@
           </mat-grid-tile>
         </mat-grid-list>
     </form>
+    
   </mat-card>

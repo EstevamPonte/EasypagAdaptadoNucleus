@@ -1,0 +1,51 @@
+<div class="tableStyle">
+  <table mat-table [dataSource]="dataSource">
+  
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Nome </th>
+      <td mat-cell *matCellDef="let element"> {{element.customer.name}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="dueDate">
+      <th mat-header-cell *matHeaderCellDef> Data de validade </th>
+      <td mat-cell *matCellDef="let element"> {{element.dueDate}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="phoneNumber" >
+      <th mat-header-cell *matHeaderCellDef> Numero </th>
+      <td mat-cell *matCellDef="let element" mask="+00 (00) 00000-0000"> {{element.customer.phoneNumber | mask: '+00 (00) 00000-0000'}} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let element"> {{element.customer.email}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef> Status do pagamente </th>
+      <td mat-cell *matCellDef="let element"> {{element.payment.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="cpf/cnpj">
+      <th mat-header-cell *matHeaderCellDef> cpf/cnpj </th>
+      <td mat-cell *matCellDef="let element"> {{element.customer.doc.number | mask: returnMask(element.customer.doc.number)}} </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef> Ações </th>
+      <td mat-cell *matCellDef="let element">
+        <button (click)="deleteBoleto(element.id)" [disabled]="element.payment.status === '5'" mat-icon-button aria-label="Example icon button with a home icon">
+          <mat-icon color=warn>cancel</mat-icon>
+        </button>
+        <button (click)="viewBoleto(element.id)" mat-icon-button aria-label="Example icon button with a home icon">
+          <mat-icon color="accent">
+            insert_drive_file</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" ></tr>
+  </table>
+  <mat-paginator [length]="resultsLength" [pageSize]="limit" (page)="updatePage($event)"></mat-paginator>
+</div>
