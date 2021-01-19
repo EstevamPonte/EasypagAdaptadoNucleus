@@ -19,14 +19,14 @@
             <mat-grid-tile [colspan]="2" [rowspan]="1">
               <mat-form-field class="inputStyle">
                 <mat-label>CPF/CNPJ</mat-label>
-                <input matInput mask="000.000.000-00||00.000.000/0000-00" formControlName="cpfcnpj">
+                <input matInput mask="000.000.000-00||00.000.000/0000-00" formControlName="docNumber">
               </mat-form-field>
             </mat-grid-tile>
 
             <mat-grid-tile [colspan]="2" [rowspan]="1">
               <mat-form-field class="inputStyle">
                 <mat-label>Telefone</mat-label>
-                <input matInput mask="(00) 00000-0000" formControlName="telefone">
+                <input matInput mask="+00 (00) 00000-0000" placeholder="Ex: 55 85 999999999" formControlName="phoneNumber">
               </mat-form-field>
             </mat-grid-tile>
 
@@ -39,7 +39,7 @@
 
           </mat-grid-list>
 
-          <mat-grid-list cols="9" rowHeight="100px">
+          <mat-grid-list formGroupName="address" cols="9" rowHeight="100px">
 
             <mat-grid-tile [colspan]="9">
               <h3>Endereço</h3>
@@ -55,7 +55,7 @@
             <mat-grid-tile [colspan]="3" [rowspan]="1">
               <mat-form-field class="inputStyle">
                 <mat-label>Cidade</mat-label>
-                <input matInput formControlName="cidade">
+                <input matInput formControlName="city">
               </mat-form-field>
             </mat-grid-tile>
     
@@ -69,21 +69,21 @@
             <mat-grid-tile [colspan]="3" [rowspan]="1">
               <mat-form-field class="inputStyle">
                 <mat-label>Logradouro</mat-label>
-                <input matInput formControlName="logradouro">
+                <input matInput formControlName="addressLine1">
               </mat-form-field>
             </mat-grid-tile>
     
             <mat-grid-tile [colspan]="3" [rowspan]="1">
               <mat-form-field class="inputStyle">
                 <mat-label>Número</mat-label>
-                <input matInput formControlName="numero">
+                <input matInput formControlName="streetNumber">
               </mat-form-field>
             </mat-grid-tile>
     
             <mat-grid-tile [colspan]="3" [rowspan]="1">
               <mat-form-field class="inputStyle">
                 <mat-label>Bairro</mat-label>
-                <input matInput formControlName="bairro">
+                <input matInput formControlName="area">
               </mat-form-field>
             </mat-grid-tile>
             
@@ -96,5 +96,4 @@
           
         </form>
       </mat-card>
-        <button mat-raised-button color="primary" (click)="obterClientes()">Cadastrar cliente</button>
 </div>

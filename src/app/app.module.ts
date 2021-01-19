@@ -9,9 +9,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ClienteComponent } from './Cliente/cliente.component';
 import { NavBarComponent } from './NavBar/navbar.component';
 import { CadastroCobrancaComponent } from './CadastroCobranca/cadastroCobranca.component';
-import { CadastroClienteWrapperComponent } from './CadastroClienteWrapper/cadastroclientewrapper.component'
+import { CadastroClienteWrapperComponent } from './CadastroClienteWrapper/cadastroclientewrapper.component';
 
-import { ClienteService } from './Services/cliente.service'
+import { ClienteService } from './Services/cliente.service';
+import { CustomSnackbarService } from './Services/snack.service';
+import { CobrancaService } from './Services/cobranca.service'
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -27,9 +29,28 @@ import { MatSelectModule } from '@angular/material/select';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { HttpClientModule } from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import { DatePipe } from '@angular/common';
+import { NgxCurrencyModule, CurrencyMaskInputMode } from "ngx-currency";
 
 const maskConfig: Partial<IConfig> = {
   validation: false,
+};
+
+export const customCurrencyMaskConfig: any = {
+  align: "left",
+  allowNegative: true,
+  allowZero: false,
+  decimal: ".",
+  precision: 2,
+  prefix: "R$ ",
+  suffix: "",
+  thousands: ".",
+  nullable: true,
+  min: null,
+  max: null,
+  inputMode: CurrencyMaskInputMode.FINANCIAL
 };
 
 @NgModule({
@@ -59,10 +80,16 @@ const maskConfig: Partial<IConfig> = {
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSnackBarModule,
+    MatMomentDateModule,
+    NgxCurrencyModule.forRoot(customCurrencyMaskConfig)
   ],
   providers: [
-    ClienteService
+    ClienteService,
+    CustomSnackbarService,
+    DatePipe,
+    CobrancaService
   ],
   bootstrap: [AppComponent],
   exports: [
