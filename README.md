@@ -3,7 +3,7 @@
 Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 11.0.7 para o desafio da empresa <b>Nucleus</b>.
 
 ## Instalar as dependências o projeto
-Para baixar as dependencias do projeto execute o comando `npm i`
+Para baixar as dependências do projeto execute o comando `npm i`
 
 ## Versões do projeto
 Node na versão <b>12.18.3</b>
