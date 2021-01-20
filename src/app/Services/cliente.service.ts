@@ -9,7 +9,7 @@ import { Clientes } from "../Model/clientes.model";
 export class ClienteService {
   public headers = new HttpHeaders();
   public atualizarClientesEmiter = new EventEmitter();
-  readonly apiURL = 'https://pagamentos-estevans.herokuapp.com/api/v1/customers';
+  readonly apiURL = 'http://localhost:4200/api/v1/customers';
   
   public constructor (private http: HttpClient) {
     const basicAuth = "yRpWoIJiw7peZ3jqDuz9JfLg9bl0h4nQ:jpg3517nc8J3uU3kPbrKfI3NwxuEpYwNI6piaFnu";
