@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 export class CobrancaService {
   public headers = new HttpHeaders();
   public params = new HttpParams();
-  readonly apiURL = 'http://localhost:4200/api/v1/invoices';
+  readonly apiURL = 'https://pagamentos-estevans.herokuapp.com/api/v1/invoices';
 
   public constructor (private http: HttpClient) {
 
