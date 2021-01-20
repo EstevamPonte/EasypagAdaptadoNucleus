@@ -1,9 +1,9 @@
-import { Component } from '@angular/core'
-import { FormBuilder, FormGroup } from '@angular/forms'
-import { Cliente } from '../Model/cliente.mode'
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Cliente } from '../Model/cliente.mode';
 
-import { ClienteService } from '../Services/cliente.service'
-import { CustomSnackbarService } from '../Services/snack.service'
+import { ClienteService } from '../Services/cliente.service';
+import { CustomSnackbarService } from '../Services/snack.service';
 
 @Component({
   selector: 'cadastrocliente',
@@ -11,12 +11,12 @@ import { CustomSnackbarService } from '../Services/snack.service'
   styleUrls: ['./cliente.component.css']
 })
 
-export class ClienteComponent{
+export class ClienteComponent {
   public form: FormGroup;
   public checked = false;
-  clientes: Cliente[] = [];
-
-
+  public clientes: Cliente[] = [];
+  public errosMessage: string = '';
+  public clientesResults: Array<Cliente> = new Array;
 
   public constructor(private formBuilder: FormBuilder,
     private clienteService: ClienteService,
@@ -35,19 +35,19 @@ export class ClienteComponent{
         streetNumber: [null],
       }),
     });
-  }
-  
-  public cadastrarCliente() {
-    
+  };
+
+  public postCliente() {
+
     this.clienteService.postCliente(this.form.value)
-    .subscribe(
-      (clientes: any) => {
+      .subscribe(
+        (clientes: any) => {
           this.form.reset()
-          this.CustomSnackbarService.open("Cadastro realizado, agora atualize a lista de clientes")
-          console.log(clientes) 
+          this.CustomSnackbarService.open("Cadastro realizado com sucesso")
+          this.clienteService.updateClientes();
         }
       )
-  }
+  };
 
-  
+
 }

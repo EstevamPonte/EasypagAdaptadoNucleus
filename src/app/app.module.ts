@@ -10,11 +10,11 @@ import { ClienteComponent } from './Cliente/cliente.component';
 import { NavBarComponent } from './NavBar/navbar.component';
 import { CadastroCobrancaComponent } from './CadastroCobranca/cadastroCobranca.component';
 import { CadastroClienteWrapperComponent } from './CadastroClienteWrapper/cadastroclientewrapper.component';
-import { ListarCobrancaComponent } from './ListarCobranca/listarcobranca.component'
+import { ListarCobrancaComponent } from './ListarCobranca/listarcobranca.component';
 
 import { ClienteService } from './Services/cliente.service';
 import { CustomSnackbarService } from './Services/snack.service';
-import { CobrancaService } from './Services/cobranca.service'
+import { CobrancaService } from './Services/cobranca.service';
 
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
