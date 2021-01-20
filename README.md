@@ -1,6 +1,6 @@
 # AngularEasypag
 
-Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) verão 11.0.7 para o desafio da empresa <b>Nucleus</b>.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 11.0.7 para o desafio da empresa <b>Nucleus</b>.
 
 ## Executar o projeto
 
